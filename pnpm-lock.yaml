@@ -16,6 +16,7 @@ specifiers:
   ts-node-test-register: ~10.0.0
   tsup: ^5.10.0
   typescript: ^4.5.2
+  typescript-parser: ~2.6.1
 
 devDependencies:
   '@antfu/ni': 0.12.0
@@ -33,6 +34,7 @@ devDependencies:
   ts-node-test-register: 10.0.0_ts-node@10.4.0
   tsup: 5.11.10_ts-node@10.4.0+typescript@4.5.4
   typescript: 4.5.4
+  typescript-parser: 2.6.1
 
 packages:
 
@@ -3223,6 +3225,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: true
+
   /lodash.capitalize/4.2.1:
     resolution: {integrity: sha1-+CbJtOKoUR2E46yinbBeGk87cqk=}
     dev: true
@@ -4554,6 +4560,21 @@ packages:
   /type-fest/0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
+    dev: true
+
+  /typescript-parser/2.6.1:
+    resolution: {integrity: sha512-p4ZC10pu67KO8+WJALsJWhbAq4pRBIcP+ls8Bhl+V8KvzYQDwxw/P5hJhn3rBdLnfS5aGLflfh7WiZpN6yi+5g==}
+    dependencies:
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      tslib: 1.14.1
+      typescript: 3.9.10
+    dev: true
+
+  /typescript/3.9.10:
+    resolution: {integrity: sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: true
 
   /typescript/4.5.4:

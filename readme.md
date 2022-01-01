@@ -1,44 +1,63 @@
-[![npm version](https://img.shields.io/npm/v/svelte-local-storage-store.svg)](https://www.npmjs.com/package/svelte-local-storage-store) [![license](https://img.shields.io/npm/l/svelte-local-storage-store.svg)](LICENSE.md) [![codecov](https://codecov.io/gh/joshnuss/svelte-local-storage-store/branch/master/graph/badge.svg?token=GU607D2YRQ)](https://codecov.io/gh/joshnuss/svelte-local-storage-store)
-
-# svelte-local-storage-store
-
-A store that adds pub/sub to local storage. Supports changes across multiple tabs.
+<div align=center>
+  <h1><code>@svelterun/store</code></h1>
+  <p>Persisted version of Svelte's <code>writable</code> store.</p>
+</div>
 
 ## Installation
 
 ```bash
-npm install svelte-local-storage-store
+pnpm add @svelterun/store
+```
+
+```bash
+yarn add @svelterun/store
+```
+
+```bash
+npm i -D @svelterun/store
 ```
 
 ## Usage
 
-Define the store:
+### `./stores.js`
 
 ```javascript
-import { writable } from 'svelte-local-storage-store'
+import { writable } from '@svelterun/store'
 
-// First param `preferences` is the local storage key.
-// Second param is the initial value.
+/**
+ * @param {string} key - localStorage key 
+ * @param {*} value - the store's initial value
+ * @returns {import('svelte/store').Writable}
+ */
 export const preferences = writable('preferences', {
   theme: 'dark',
   pane: '50%',
-  ...
+  // ...
 })
 ```
 
-Then when you want to use the store:
-  
+### `./App.svelte`
+
 ```javascript
 import { get } from 'svelte/store'
 import { preferences } from './stores'
 
-preferences.subscribe(...) // subscribe to changes
-preferences.update(...) // update value
-preferences.set(...) // set value
-get(preferences) // read value
-$preferences // read value with automatic subscription
+// subscribe to changes
+preferences.subscribe(value => console.log('preferences:\n', value))
+
+// update value
+preferences.update(current => ({...current, theme: 'light'}))
+
+// set value
+preferences.set(value)
+
+// read value
+get(preferences)
+
+// read value with auto subscription
+$preferences
 ```
 
 ## License
 
-MIT
+MIT © [Svelte.run](https://github.com/svelterun), [Nicholas Berlette](https://github.com/nberlette)

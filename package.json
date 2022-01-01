@@ -84,7 +84,8 @@
     "ts-node": "~10.4.0",
     "ts-node-test-register": "~10.0.0",
     "tsup": "^5.10.0",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "typescript-parser": "~2.6.1"
   },
   "keywords": [
     "svelte",
