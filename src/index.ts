@@ -25,9 +25,9 @@ export function writable<T>(key: string, initialValue: T): Writable<T> {
         }
 
         window.addEventListener("storage", handleStorage)
-	return () => {
-	  window.removeEventListener("storage", handleStorage)
-      	}
+        return () => {
+          window.removeEventListener("storage", handleStorage)
+        }
       }
     })
 
