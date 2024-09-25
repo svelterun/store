@@ -22,42 +22,43 @@ npm i -D @svelterun/store
 ### `./stores.js`
 
 ```javascript
-import { writable } from '@svelterun/store'
+import { writable } from "@svelterun/store";
 
 /**
- * @param {string} key - localStorage key 
+ * @param {string} key - localStorage key
  * @param {*} value - the store's initial value
  * @returns {import('svelte/store').Writable}
  */
-export const preferences = writable('preferences', {
-  theme: 'dark',
-  pane: '50%',
+export const preferences = writable("preferences", {
+  theme: "dark",
+  pane: "50%",
   // ...
-})
+});
 ```
 
 ### `./App.svelte`
 
 ```javascript
-import { get } from 'svelte/store'
-import { preferences } from './stores'
+import { get } from "svelte/store";
+import { preferences } from "./stores";
 
 // subscribe to changes
-preferences.subscribe(value => console.log('preferences:\n', value))
+preferences.subscribe((value) => console.log("preferences:\n", value));
 
 // update value
-preferences.update(current => ({...current, theme: 'light'}))
+preferences.update((current) => ({ ...current, theme: "light" }));
 
 // set value
-preferences.set(value)
+preferences.set(value);
 
 // read value
-get(preferences)
+get(preferences);
 
 // read value with auto subscription
-$preferences
+$preferences;
 ```
 
 ## License
 
-MIT © [Svelte.run](https://github.com/svelterun), [Nicholas Berlette](https://github.com/nberlette)
+MIT © [Svelte.run](https://github.com/svelterun),
+[Nicholas Berlette](https://github.com/nberlette)

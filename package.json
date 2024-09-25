@@ -13,7 +13,9 @@
     "tag": "latest"
   },
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ]
   },
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -68,15 +70,15 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "~17.0.5",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
-    "assert": "~2.0.0",
-    "eslint": "^8.0.0",
-    "semantic-release": "18.0.1",
-    "svelte": "^3.44.2",
-    "tsup": "^5.10.0",
-    "typescript": "^4.5.2",
+    "@types/node": "~22.5.5",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
+    "assert": "~2.1.0",
+    "eslint": "^9.10.0",
+    "semantic-release": "24.1.1",
+    "svelte": "^4.2.19",
+    "tsup": "^8.2.4",
+    "typescript": "^5.6.2",
     "typescript-parser": "~2.6.1"
   },
   "keywords": [

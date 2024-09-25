@@ -1,35 +1,37 @@
-import {writable as internal, get, Writable} from 'svelte/store'
+import { get, type Writable, writable as internal } from "svelte/store";
 
-declare type Updater<T> = (value: T) => T;
-declare type StoreDict<T> = { [key: string]: Writable<T> }
+export type Updater<T> = (value: T) => T;
+
+export type StoreDict<T> = { [key: string]: Writable<T> };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const stores: StoreDict<any> = {}
+const stores: StoreDict<any> = {};
 
 export function writable<T>(key: string, initialValue: T): Writable<T> {
-  const browser = typeof window != 'undefined' && ('localStorage' in window)
+  const browser = typeof window != "undefined" && ("localStorage" in window);
 
   function updateStorage(key: string, value: T) {
-    if (browser) localStorage.setItem(key, JSON.stringify(value))
+    if (browser) localStorage.setItem(key, JSON.stringify(value));
   }
 
   if (!stores[key]) {
     const store = internal(initialValue, (set) => {
-      const json = browser ? localStorage.getItem(key) : null
-      if (json) set(<T> JSON.parse(json))
+      const json = browser ? localStorage.getItem(key) : null;
+      if (json) set(parseJson<T>(json));
 
       if (browser) {
         const handleStorage = (event: StorageEvent) => {
-          if (event.key === key)
-            set(event.newValue ? JSON.parse(event.newValue) : null)
-        }
+          if (event.key === key) {
+            set(event.newValue ? JSON.parse(event.newValue) : null);
+          }
+        };
 
-        window.addEventListener("storage", handleStorage)
+        window.addEventListener("storage", handleStorage);
         return () => {
-          window.removeEventListener("storage", handleStorage)
-        }
+          window.removeEventListener("storage", handleStorage);
+        };
       }
-    })
+    });
 
     const { subscribe, set } = store;
 
@@ -46,10 +48,9 @@ export function writable<T>(key: string, initialValue: T): Writable<T> {
         set(value);
       },
 
-      subscribe
-    }
+      subscribe,
+    };
   }
 
-  return stores[key]
+  return stores[key];
 }
-
